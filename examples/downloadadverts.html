@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contacts Spam</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                width: 250px;
+                height: 250px;
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+                overflow: hidden;
+                margin-top: 12px;
+            }
+
+            button {
+                width: 80%;
+                height: inherit;
+                background-color: black;
+                color: white;
+                border-radius: 6px;
+                padding: 6px;
+                margin-bottom: 5px;
+                font-size: 1em;
+                font-weight: bold;
+                cursor: pointer;
+                border-style: none;
+            }
+
+            br {
+                user-select: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <button id="btn">Download</button>
+            <button id="btn">The Real Download Button</button>
+            <button id="btn">Download Here</button>
+            <button id="btn">The ACTUAL Download Button</button>
+            <button id="btn">The One True Download Button</button>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        var virusTxts = [
+            "Here's a virus!",
+            "Have another virus!",
+            "Another virus for the collection!",
+            "Downloading...",
+            "Another virus for the road!"
+        ]
+        $("button").each(function(index, element) {
+            $(this).click(function(){
+                $(this).css("background-color", "#eee");
+                $(this).css("border-color", "#eee");
+                $(this).css("color", "#000");
+                $(this).css("cursor", "auto");
+                $(this).text(virusTxts[index])
+            });
+        });
+    </script>
+</html>

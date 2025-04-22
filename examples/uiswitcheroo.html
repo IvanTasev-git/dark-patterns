@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UI Switcheroo</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                width: 250px;
+                height: 250px;
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+                display: table-cell;
+                vertical-align: middle;
+                padding: 0 20px;
+            }
+
+            button {
+                width: 40%;
+                height: 1cm;
+                background-color: black;
+                color: white;
+                border-radius: 6px;
+                font-size: 1.25em;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            br {
+                user-select: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <h4 id="prompt"></h4> <br>
+            <button id="byeah" onclick="advance()">Yes</button>&nbsp;&nbsp;&nbsp;<button id="nah" onclick="advance()">No</button>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        var btnTxt = [ "Yes", "No" ];
+        var promptTxt = [
+            "Would you like to sign up for our newsletter?",
+            "Would you like to send us your DNA?",
+            "Can we please sell all your data?",
+            "Would you like us to own your soul?",
+        ]
+        var promptIndex = -1;
+
+        function advance() {
+            promptIndex += 1;
+            if(promptIndex >= 4) { promptIndex -= promptTxt.length; }
+            $("#byeah").text(btnTxt[promptIndex % 2]);
+            $("#nah").text(btnTxt[(promptIndex + 1) % 2 ]);
+            $("#prompt").text(promptTxt[promptIndex])
+        }
+
+        advance();
+    </script>
+</html>

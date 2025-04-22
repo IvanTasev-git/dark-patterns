@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Confirmshaming</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                width: 250px;
+                height: 250px;
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+                display: table-cell;
+                vertical-align: middle;
+                padding: 0 20px;
+            }
+
+            button {
+                width: 80%;
+                height: 1cm;
+                background-color: black;
+                color: white;
+                border-radius: 6px;
+                font-size: 1.25em;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            a {
+                color: gray;
+                cursor: pointer;
+                text-decoration: underline;
+                font-size: 0.75em;
+            }
+
+            br {
+                user-select: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <h4>Do you want to sign up for our amazing newsletter?</h4> <br>
+            <button id="confirm">Yes!</button> <br><br>
+            <a id="nah">No, I hate awesome content.</a>
+        </div>
+        <div id="result" hidden>
+            <h4>Thanks! Prepare for a newsletter every hour of every day!</h4> <br>
+            <button id="restart">Restart</button>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        var noPrompts = [
+            "No, I hate awesome content.",
+            "No, I hate cute dogs.",
+            "No, I like eating babies.",
+            "No, plagiarism is a good thing.",
+            "No, equality is bad for society.",
+            "No, I like pineapples on my pizza."
+        ];
+        var noIndex = 0;
+
+        function toggle() {
+            $("#main").toggle();
+            $("#result").toggle();
+        }
+
+        $("#confirm").click(function() {
+            toggle();
+        });
+
+        $("#restart").click(function() {
+            toggle();
+            noIndex = 0;
+            $("#nah").text(noPrompts[noIndex]);
+        });
+
+        $("#nah").click(function() {
+            noIndex += 1;
+            if(noIndex >= noPrompts.length) { noIndex -= noPrompts.length; }
+            $("#nah").text(noPrompts[noIndex]);
+        });
+
+        $("#nah").text(noPrompts[noIndex]);
+    </script>
+</html>

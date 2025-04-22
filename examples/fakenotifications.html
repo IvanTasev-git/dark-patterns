@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fake Notifications</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                width: 250px;
+                height: 250px;
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+                overflow: hidden;
+            }
+
+            .notif {
+                margin: 0 auto;
+                width: 215px;
+                height: 65px;
+                border-radius: 6px;
+                padding: 10px;
+                margin-top: 10px;
+                background-color: #eee;
+                line-height: 1.25em;
+                font-weight: 200;
+            }
+
+            .notif-dot {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                border-radius: 10px;
+                background-color: black;
+            }
+
+            .notif-author {
+                margin-left: 10px;
+                font-weight: bold;
+                font-size: 0.75em;
+            }
+
+            br {
+                user-select: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main"></div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        var notifTxts = [
+            "We haven't heard from you in a while!",
+            "Your friends are waiting for you!",
+            "Your friends NEED to hear from you NOW!",
+            "Somebody didn't like last night's episode of something!",
+            "Someone you don't know posted something!",
+            "Some random person just graduated!",
+            "A sport's team you never heard of just had a pregame!",
+            "A thing happened within 100 miles of you!"
+        ]
+
+        setInterval(() => {
+            var notifIndex = Math.floor(Math.random() * notifTxts.length)
+            var notif = `<div class="notif"><div style="margin-left: -1.5cm;"><span class="notif-dot"></span><span class="notif-author">Spammy Social Media</span><br></div><div style="text-align: left;">${notifTxts[notifIndex]}</div></div>`;
+            $("#main").prepend(notif);
+        }, 3000);
+    </script>
+</html>

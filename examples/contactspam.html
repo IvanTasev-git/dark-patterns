@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contacts Spam</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                width: 250px;
+                height: 250px;
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+                overflow: hidden;
+                margin-top: 12px;
+            }
+
+            button {
+                width: 80%;
+                height: 2cm;
+                background-color: black;
+                color: white;
+                border-radius: 6px;
+                padding: 12px;
+                font-size: 1.25em;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .notif {
+                margin: 0 auto;
+                width: 215px;
+                height: inherit;
+                border-radius: 6px;
+                padding: 8px 10px;
+                margin-top: 10px;
+                background-color: #eee;
+                font-weight: 200;
+                text-align: left;
+            }
+
+            br {
+                user-select: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <button onclick="toggle();">Login with social media</button>
+        </div>
+        <div id="result" hidden>
+            <h4>Hah, we can now send messages to your friends!</h4>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        var notifTxts = [
+            "Friend #1, join this site!",
+            "Friend #2, it is me, your friend. Check out this site!",
+            "Friend #3, join this site or else I'm not coming to your wedding!"
+        ];
+
+        function toggle() {
+            $("#main").toggle();
+            $("#result").toggle();
+            setTimeout(() => {
+                notifTxts.forEach((element, index) => {
+                setTimeout(() => {
+                    var notif = `<div class="notif">${element}</div>`;
+                    $("#result").append(notif);
+                }, 1500 * index);
+            });
+            }, 2500);
+        }
+    </script>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Agree and...</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                width: 250px;
+                height: 250px;
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+                display: table-cell;
+                vertical-align: middle;
+                padding: 0 20px;
+            }
+
+            button {
+                width: 80%;
+                height: 1cm;
+                background-color: black;
+                color: white;
+                border-radius: 6px;
+                font-size: 1.25em;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            br {
+                user-select: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <div style="text-align: left;">
+                <b>Name:</b> Bob Bobson <br>
+                <b>Date of Birth:</b> 1/1/11 <br>
+                <b>Role:</b> Unemployed <br> <br>
+                <form>
+                    <input type="checkbox" name="agree" id="agree"> <b>I agree to the TOS</b> <span style="font-size: 0.6em;">and henceforth agree to sell my soul to shady corp, forfeit my first born child to will of the corporation, and sign up for the newsletter.</span>
+                </form>
+            </div> <br>
+            <button id="submit">Create Account</button>
+        </div>
+        <div id="result" hidden>
+            <h4>Thank you for selling your soul. Please tell your friends about us.</h4> <br>
+            <button id="restart" onclick="toggle(); $('#agree').prop('checked', false);">Restart</button>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        function toggle() {
+            $("#main").toggle();
+            $("#result").toggle();
+        }
+
+        $("#submit").click(function() {
+            var checked = $("#agree").is(":checked");
+            if(checked) {
+                toggle();
+            }
+        });
+    </script>
+</html>
